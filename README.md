@@ -2,8 +2,7 @@
 
 [F2](https://antv.alipay.com/zh-cn/f2/3.x/index.html) charts for react-native
 
-![ios.jpg](https://github.com/aloneszjl/react-native-f2chart/tree/master/example/image/ios.jpg)
-![android.jpg](https://github.com/aloneszjl/react-native-f2chart/tree/master/example/image/android.jpg)
+<img src="example/image/ios.jpg" width="30%" height="30%"> <img src="example/image/android.jpg" width="28%" height="28%">
 
 ## install
 
