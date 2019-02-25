@@ -2,6 +2,9 @@
 
 [F2](https://antv.alipay.com/zh-cn/f2/3.x/index.html) charts for react-native
 
+![ios.jpg](https://github.com/aloneszjl/react-native-f2chart/tree/master/example/image/ios.jpg)
+![android.jpg](https://github.com/aloneszjl/react-native-f2chart/tree/master/example/image/android.jpg)
+
 ## install
 
 1、
