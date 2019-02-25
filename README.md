@@ -1,6 +1,6 @@
 # react-native-f2chart
 
-F2 charts for react-native
+[F2](https://antv.alipay.com/zh-cn/f2/3.x/index.html) charts for react-native
 
 ## install
 
