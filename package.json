@@ -10,7 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/aloneszjl/react-native-f2chart.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react-native",
+    "f2charts",
+    "chart",
+    "charts",
+    "f2"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
