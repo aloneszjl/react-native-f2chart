@@ -1,6 +1,6 @@
 {
   "name": "react-native-f2chart",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "F2 charts for react-native",
   "main": "src/index.js",
   "scripts": {
@@ -12,10 +12,10 @@
   },
   "keywords": [
     "react-native",
-    "f2charts",
+    "f2chart",
     "chart",
-    "charts",
-    "f2"
+    "react-native-f2",
+    "react-native-chart"
   ],
   "author": "",
   "license": "ISC",
