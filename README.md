@@ -20,7 +20,7 @@ simple demo [example](example)
 import Chart from "react-native-f2chart";
 
 // 参考 https://antv.alipay.com/zh-cn/f2/3.x/demo/line/basic.html
-const initScript = `
+const initScript = data =>`
 (function(){
     chart =  new F2.Chart({
         id: 'chart',
