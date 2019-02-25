@@ -12,7 +12,7 @@ yarn add react-native-f2chart or npm i react-native-f2chart
 
 2、 copy `node_moules/react-native-f2chart/src/f2chart.html` to `android/app/src/main/assets/f2chart.html`
 
-simple demo [example](example/README.md)
+simple demo [example](example)
 
 ## usage
 
