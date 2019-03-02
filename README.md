@@ -91,6 +91,7 @@ const initScript = data =>`
 
 ## Notice
 
+- canvas的id 是 'chart'，不是文档中的 'mountNode'
 - chart 已经在源码的 html 定义过了，在 `initScript` 中，并不需要定义 chart，直接给 chart 赋值即可
 - tooltip onchange 中 传输数据时用到的 `stringify` 也是在 html 定义好的，可以直接使用，用 `JSON.stringify` 会报错, [原因](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value)
 - 如果使用的是 `react-native-webview`，在 tooltip 中的 `postMessage` 应该为 `window.ReactNativeWebView.postMessage`
