@@ -4,6 +4,9 @@
 
 <img src="example/image/ios.jpg" width="30%" height="30%"> <img src="example/image/android.jpg" width="28%" height="28%">
 
+
+<img src="example/image/pie-chart.jpg" width="80%" height="80%">
+
 ## install
 
 1、
