@@ -39,6 +39,8 @@ export default class Chart extends PureComponent<Props> {
     this.chart.current.injectJavaScript(changeData(data));
   };
 
+  repaint = script => this.chart.current.injectJavaScript(script);
+
   onMessage = event => {
     const {
       nativeEvent: { data }

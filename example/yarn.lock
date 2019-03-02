@@ -4542,9 +4542,9 @@ react-lifecycles-compat@2.0.0:
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
 react-native-f2chart@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/react-native-f2chart/-/react-native-f2chart-1.0.6.tgz#558b0f56acfc691a137d0bf3685a822bf9ded363"
-  integrity sha512-2Y4LG38nu/gpBHObb8Gpwyqleb7bYZpgGiG7EIgNOfxyiMS2EsYCkchBWxCJ85AHQVWyZcK/SbAtgLqVYyM9Kw==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-f2chart/-/react-native-f2chart-1.1.0.tgz#6d23cb1aca05dd66c7555cd0ba133cc1c97ffdc3"
+  integrity sha512-cFIN1FSlzjOuI0KjmwfMypBYgzoDC8gm3Islw9APahIDDj3V7BlrFDTaWnZzmPn08v4DW9CrMEV5eYdz/CAkig==
 
 react-native-navigation@^2.12.0:
   version "2.12.0"

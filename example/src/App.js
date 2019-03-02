@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigation } from "react-native-navigation";
-import LineChartScreen from "./line-chart/LineChartScreen";
 import HomeScreen from "./HomeScreen";
+import { charts, ScreenIds, ScreenComponents } from "./Screens";
 
 Navigation.registerComponent(`navigation.HomeScreen`, () => HomeScreen);
-Navigation.registerComponent(
-  `navigation.LineChartScreen`,
-  () => LineChartScreen
-);
+
+charts.forEach(chart => {
+  Navigation.registerComponent(ScreenIds[chart], () => ScreenComponents[chart]);
+});
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({

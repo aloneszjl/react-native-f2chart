@@ -8,7 +8,7 @@ import { baseChart, dynamicChart } from "./scripts";
 
 type Props = {};
 
-class LineChart extends PureComponent {
+class LineChartScreen extends PureComponent {
   state = {
     data
   };
@@ -67,4 +67,4 @@ class LineChart extends PureComponent {
   }
 }
 
-export default LineChart;
+export default LineChartScreen;

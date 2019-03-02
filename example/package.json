@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.58.5",
-    "react-native-f2chart": "^1.0.6",
+    "react-native-f2chart": "^1.1.0",
     "react-native-navigation": "^2.12.0",
     "react-native-webview": "^5.2.1"
   },

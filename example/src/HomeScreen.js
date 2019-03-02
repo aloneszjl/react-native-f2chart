@@ -3,8 +3,7 @@ import { Navigation } from "react-native-navigation";
 import Container from "./components/Container";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import { Title } from "./components";
-
-const charts = ["LineChart"];
+import { charts, ScreenIds } from "./Screens";
 
 class HomeScreen extends PureComponent {
   render() {
@@ -16,7 +15,7 @@ class HomeScreen extends PureComponent {
               onPress={() => {
                 Navigation.push(this.props.componentId, {
                   component: {
-                    name: `navigation.${chart}Screen`,
+                    name: ScreenIds[chart],
                     options: {
                       topBar: {
                         title: {
