@@ -1,6 +1,6 @@
 {
   "name": "react-native-f2chart",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "F2 charts for react-native",
   "main": "src/index.js",
   "scripts": {
