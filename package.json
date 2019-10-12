@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/aloneszjl/react-native-f2chart#readme",
   "dependencies": {
-    "react-native-webview": "^5.11.0",
-  },
+    "react-native-webview": "^5.11.0"
+  }
 }
