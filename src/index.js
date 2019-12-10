@@ -1,11 +1,11 @@
 import React, { PureComponent, createRef } from "react";
 import { StyleSheet, Platform } from "react-native";
-import { WebView as RNWebView } from 'react-native-webview';
 
 const changeData = data => `chart.changeData(${JSON.stringify(data)});`;
 
 const source = Platform.select({
-  ios: require("./f2chart.html"),
+  ios: require('./f2chart.html'),
+  // android: { html: require('./f2chart.js') }
   android: { uri: "file:///android_asset/f2chart.html" }
 });
 
@@ -13,7 +13,7 @@ type Props = {
   initScript: string,
   data?: Array<Object>,
   onChange?: Function,
-  webView?: any
+  WebView?: any
 };
 
 export default class Chart extends PureComponent<Props> {
@@ -21,7 +21,7 @@ export default class Chart extends PureComponent<Props> {
     onChange: () => {},
     initScript: "",
     data: [],
-    webView: RNWebView
+    WebView: null,
   };
 
   constructor(props) {
@@ -53,7 +53,7 @@ export default class Chart extends PureComponent<Props> {
 
   render() {
     const {
-      webView: WebView,
+      WebView,
       data,
       onChange,
       initScript,
