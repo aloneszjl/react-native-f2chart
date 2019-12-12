@@ -59,8 +59,10 @@ export default class Chart extends PureComponent<Props> {
       initScript,
       ...props
     } = this.props;
+
     return (
       <WebView
+        useWebKit
         javaScriptEnabled
         ref={this.chart}
         scrollEnabled={false}
