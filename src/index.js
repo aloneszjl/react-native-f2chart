@@ -46,9 +46,19 @@ export default class Chart extends PureComponent<Props> {
     const {
       nativeEvent: { data }
     } = event;
-    const { onChange } = this.props;
-    const tooltip = JSON.parse(data);
-    onChange(tooltip);
+
+    const { onChange, onClick, } = this.props;
+    const obj = JSON.parse(data);
+    switch(obj.type) {
+      case 'tooltip':
+        onChange(obj)
+        break
+      case 'click':
+        onClick(obj)
+        break
+      default:
+        break
+    }
   };
 
   render() {
