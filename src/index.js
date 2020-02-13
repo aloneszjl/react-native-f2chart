@@ -29,12 +29,12 @@ export default class Chart extends PureComponent<Props> {
     this.chart = createRef();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { data } = this.props;
-    if (data !== nextProps.data) {
-      this.update(nextProps.data);
+    if (JSON.stringify(data) !== JSON.stringify(prevProps.data)) {
+      this.update(data)
     }
-  }
+  };
 
   update = data => {
     this.chart.current.injectJavaScript(changeData(data));
