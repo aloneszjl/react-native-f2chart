@@ -30,7 +30,12 @@
   </head>
 
   <body>
-    <canvas id="chart" onclick="getClickPosition.call(this, event)"></canvas>
+    <canvas 
+      id="chart" 
+      ontouchstart="touchStart.call(this, event)"
+      ontouchmove="touchMove.call(this, event)"
+      ontouchend="touchEnd.call(this, event)">
+    </canvas>
     <script>
       function getCircularReplacer() {
         var seen = new WeakSet();
@@ -64,11 +69,27 @@
         p = getEventPosition(event);
         const obj = chart.getSnapRecords({x: p.x, y: p.y})
         if (obj) {
-          window.ReactNativeWebView.postMessage(stringify({ ...obj, type: 'click' }))
+          window.ReactNativeWebView.postMessage(stringify({ ...obj, type: 'longPress' }))
         }
       } 
 
+      function touchStart(event) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          getClickPosition(event)
+        }, 300)
+      }
+
+      function touchMove(event) {
+        clearTimeout(timer)
+      }
+
+      function touchEnd(event) {
+        clearTimeout(timer)
+      }
+
       let chart;
+      let timer;
     </script>
   </body>
 </html>
