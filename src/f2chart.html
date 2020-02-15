@@ -30,7 +30,12 @@
   </head>
 
   <body>
-    <canvas id="chart"></canvas>
+    <canvas 
+      id="chart" 
+      ontouchstart="touchStart.call(this, event)"
+      ontouchmove="touchMove.call(this, event)"
+      ontouchend="touchEnd.call(this, event)">
+    </canvas>
     <script>
       function getCircularReplacer() {
         var seen = new WeakSet();
@@ -48,7 +53,43 @@
         return JSON.stringify(data, getCircularReplacer());
       }
 
+      function getEventPosition(ev){
+        var x, y;
+        if (ev.layerX || ev.layerX == 0) {
+          x = ev.layerX;
+          y = ev.layerY;
+        } else if (ev.offsetX || ev.offsetX == 0) { // Opera
+          x = ev.offsetX;
+          y = ev.offsetY;
+        }
+        return { x, y };
+      }
+
+      function getClickPosition(event) { 
+        p = getEventPosition(event);
+        const obj = chart.getSnapRecords({x: p.x, y: p.y})
+        if (obj) {
+          window.ReactNativeWebView.postMessage(stringify({ ...obj, type: 'longPress' }))
+        }
+      } 
+
+      function touchStart(event) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          getClickPosition(event)
+        }, 300)
+      }
+
+      function touchMove(event) {
+        clearTimeout(timer)
+      }
+
+      function touchEnd(event) {
+        clearTimeout(timer)
+      }
+
       let chart;
+      let timer;
     </script>
   </body>
 </html>
