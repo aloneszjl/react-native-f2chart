@@ -62,7 +62,7 @@
       }
       .f2-tooltip img {
         background-color: #fff;
-        object-fit: contain;
+        vertical-align: middle;
       }
     </style>
     <!-- f2-3.3.5-all.min.js -->
@@ -73,7 +73,8 @@
   </head>
 
   <body>
-    <div class="f2-tooltip"></div>
+    <div class="f2-tooltip">
+    </div>
     <canvas 
       id="chart" 
       ontouchstart="touchStart.call(this, event)"
