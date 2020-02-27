@@ -98,15 +98,10 @@
         return JSON.stringify(data, getCircularReplacer());
       }
 
-      function getEventPosition(ev){
-        var x, y;
-        if (ev.layerX || ev.layerX == 0) {
-          x = ev.layerX;
-          y = ev.layerY;
-        } else if (ev.offsetX || ev.offsetX == 0) { // Opera
-          x = ev.offsetX;
-          y = ev.offsetY;
-        }
+      function getEventPosition(ev) {
+        var touch = ev.touches[0];
+        var x = touch.pageX;
+        var y = touch.pageY;
         return { x, y };
       }
 
