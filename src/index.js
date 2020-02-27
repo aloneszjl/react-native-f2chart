@@ -51,11 +51,11 @@ export default class Chart extends PureComponent<Props> {
     const obj = JSON.parse(data);
     switch(obj.type) {
       case 'longPress':
-        onLongPress(obj)
+        onLongPress && onLongPress(obj)
         break
       case 'tooltip':
       default:
-        onChange(obj)
+        onChange && onChange(obj)
         break
     }
   };
