@@ -92,6 +92,9 @@ const initScript = data =>`
 | `onChange`   | Function      | tooltip onchange                                                                            | `no`     |
 | `webView`    | ReactElement  | 渲染图表的 webview，可以使用 react-native-webview 代替，默认使用 react-natve 里面的 webview | `no`     |
 
+## Important
+- Before using make sure to install [react-native-webview](https://www.npmjs.com/package/react-native-webview)
+
 ## Notice
 
 - canvas的id 是 'chart'，不是文档中的 'mountNode'
