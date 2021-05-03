@@ -73,6 +73,7 @@ export default class Chart extends PureComponent<Props> {
       <WebView
         useWebKit
         javaScriptEnabled
+        androidHardwareAccelerationDisabled
         ref={this.chart}
         scrollEnabled={false}
         style={styles.webView}
