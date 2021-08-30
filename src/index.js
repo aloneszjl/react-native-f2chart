@@ -42,6 +42,8 @@ export default class Chart extends PureComponent<Props> {
 
   repaint = script => this.chart.current.injectJavaScript(script);
 
+  onContentProcessDidTerminate = () => this.chart.current.reload();
+
   onMessage = event => {
     const {
       nativeEvent: { data }
@@ -81,6 +83,7 @@ export default class Chart extends PureComponent<Props> {
         source={source}
         originWhitelist={["*"]}
         onMessage={this.onMessage}
+        onContentProcessDidTerminate={this.onContentProcessDidTerminate}
         {...props}
       />
     );
