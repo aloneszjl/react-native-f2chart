@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/aloneszjl/react-native-f2chart/issues"
   },
-  "homepage": "https://github.com/aloneszjl/react-native-f2chart#readme"
+  "homepage": "https://github.com/aloneszjl/react-native-f2chart#readme",
+  "dependencies": {
+    "react-native-webview": "^5.11.0"
+  }
 }

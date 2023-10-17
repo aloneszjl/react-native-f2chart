@@ -1,10 +1,11 @@
 import React, { PureComponent, createRef } from "react";
-import { WebView as RNWebView, StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 const changeData = data => `chart.changeData(${JSON.stringify(data)});`;
 
 const source = Platform.select({
-  ios: require("./f2chart.html"),
+  ios: require('./f2chart.html'),
+  // android: { html: require('./f2chart.js') }
   android: { uri: "file:///android_asset/f2chart.html" }
 });
 
@@ -12,7 +13,7 @@ type Props = {
   initScript: string,
   data?: Array<Object>,
   onChange?: Function,
-  webView?: any
+  WebView?: any
 };
 
 export default class Chart extends PureComponent<Props> {
@@ -20,7 +21,7 @@ export default class Chart extends PureComponent<Props> {
     onChange: () => {},
     initScript: "",
     data: [],
-    webView: RNWebView
+    WebView: null,
   };
 
   constructor(props) {
@@ -28,12 +29,12 @@ export default class Chart extends PureComponent<Props> {
     this.chart = createRef();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { data } = this.props;
-    if (data !== nextProps.data) {
-      this.update(nextProps.data);
+    if (JSON.stringify(data) !== JSON.stringify(prevProps.data)) {
+      this.update(data)
     }
-  }
+  };
 
   update = data => {
     this.chart.current.injectJavaScript(changeData(data));
@@ -41,26 +42,40 @@ export default class Chart extends PureComponent<Props> {
 
   repaint = script => this.chart.current.injectJavaScript(script);
 
+  onContentProcessDidTerminate = () => this.chart.current.reload();
+
   onMessage = event => {
     const {
       nativeEvent: { data }
     } = event;
-    const { onChange } = this.props;
-    const tooltip = JSON.parse(data);
-    onChange(tooltip);
+
+    const { onChange, onLongPress, } = this.props;
+    const obj = JSON.parse(data);
+    switch(obj.type) {
+      case 'longPress':
+        onLongPress && onLongPress(obj)
+        break
+      case 'tooltip':
+      default:
+        onChange && onChange(obj)
+        break
+    }
   };
 
   render() {
     const {
-      webView: WebView,
+      WebView,
       data,
       onChange,
       initScript,
       ...props
     } = this.props;
+
     return (
       <WebView
+        useWebKit
         javaScriptEnabled
+        androidHardwareAccelerationDisabled
         ref={this.chart}
         scrollEnabled={false}
         style={styles.webView}
@@ -68,6 +83,7 @@ export default class Chart extends PureComponent<Props> {
         source={source}
         originWhitelist={["*"]}
         onMessage={this.onMessage}
+        onContentProcessDidTerminate={this.onContentProcessDidTerminate}
         {...props}
       />
     );

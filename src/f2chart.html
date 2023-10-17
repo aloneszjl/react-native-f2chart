@@ -19,6 +19,50 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+      }
+      .chart-wrapper {
+        position: relative;
+      }
+      .f2-tooltip {
+        position: absolute;
+        z-index: 99;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        opacity: 0;
+      }
+      .f2-tooltip:after {
+        content: " ";
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: 50%;
+        margin-left: -5px;
+        bottom: -5px;
+      }
+      .f2-tooltip span {
+        display: block;
+        color: #fff;
+      }
+      .f2-tooltip span:nth-child(1) {
+        font-size: 10px !important;
+        color: #fff;
+        font-family: Helvetica;
+      }
+      .f2-tooltip span:nth-child(2) {
+        font-size: 24px !important;
+        font-family: Helvetica;
+        color: #fff;
+      }
+      .f2-tooltip img {
+        background-color: #fff;
+        vertical-align: middle;
       }
     </style>
     <!-- f2-3.3.5-all.min.js -->
@@ -28,7 +72,14 @@
   </head>
 
   <body>
-    <canvas id="chart"></canvas>
+    <div class="f2-tooltip">
+    </div>
+    <canvas
+      id="chart"
+      ontouchstart="touchStart.call(this, event)"
+      ontouchmove="touchMove.call(this, event)"
+      ontouchend="touchEnd.call(this, event)">
+    </canvas>
     <script>
       function getCircularReplacer() {
         var seen = new WeakSet();
@@ -46,7 +97,38 @@
         return JSON.stringify(data, getCircularReplacer());
       }
 
+      function getEventPosition(ev) {
+        var touch = ev.touches[0];
+        var x = touch.pageX;
+        var y = touch.pageY;
+        return { x, y };
+      }
+
+      function getClickPosition(event) {
+        p = getEventPosition(event);
+        const obj = chart.getSnapRecords({x: p.x, y: p.y})
+        if (obj) {
+          window.ReactNativeWebView.postMessage(stringify({ ...obj, type: 'longPress' }))
+        }
+      }
+
+      function touchStart(event) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          getClickPosition(event)
+        }, 300)
+      }
+
+      function touchMove(event) {
+        clearTimeout(timer)
+      }
+
+      function touchEnd(event) {
+        clearTimeout(timer)
+      }
+
       let chart;
+      let timer;
     </script>
   </body>
 </html>
